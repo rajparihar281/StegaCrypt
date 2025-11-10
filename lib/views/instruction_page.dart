@@ -124,7 +124,6 @@ class InstructionsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
 
-                  // Return to main button
                   CustomButton(
                     text: 'Start Hiding Data',
                     icon: Icons.arrow_forward,
