@@ -93,7 +93,7 @@ class _DecodePageState extends State<DecodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, // Ensure full width
+        width: double.infinity, 
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
