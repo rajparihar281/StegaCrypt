@@ -52,8 +52,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Removed the title since it's now in the AppBar
-                const SizedBox(height: 10),
+                 const SizedBox(height: 10),
                 Center(
                   child: Text(
                     'Hide your secret messages in images',
