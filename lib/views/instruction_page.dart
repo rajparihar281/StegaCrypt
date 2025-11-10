@@ -43,8 +43,6 @@ class InstructionsPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 30),
-
-                  // Main Instructions
                   _buildSection(
                     title: "Data Hiding Process",
                     icon: Icons.enhanced_encryption,
