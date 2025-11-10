@@ -142,7 +142,6 @@ class _DecodePageState extends State<DecodePage> {
                           ],
                         ),
                       ),
-                      // Content area - takes all remaining space
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
