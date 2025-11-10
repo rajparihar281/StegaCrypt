@@ -342,8 +342,6 @@ class _EncodePageState extends State<EncodePage> {
                                       ],
                                     ),
                                   ),
-
-                                  // Flexible spacer
                                   const Spacer(),
 
                                   // Footer note at bottom
