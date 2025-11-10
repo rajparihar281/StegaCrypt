@@ -80,7 +80,6 @@ class InstructionsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
 
-                  // Decoding Instructions
                   _buildSection(
                     title: "Retrieving Hidden Data",
                     icon: Icons.no_encryption,
