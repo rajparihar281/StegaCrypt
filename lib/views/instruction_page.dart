@@ -26,7 +26,6 @@ class InstructionsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // App Bar Section
                   Row(
                     children: [
                       IconButton(
