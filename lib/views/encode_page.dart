@@ -262,8 +262,6 @@ class _EncodePageState extends State<EncodePage> {
                                     height: 220,
                                     fit: BoxFit.cover,
                                   ),
-
-                                  // Text Input
                                   CustomInput(
                                     controller: _textController,
                                     hintText: 'Enter your secret text here...',
