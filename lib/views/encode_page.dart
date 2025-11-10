@@ -271,7 +271,6 @@ class _EncodePageState extends State<EncodePage> {
                                   ),
                                   const SizedBox(height: 25),
 
-                                  // Encode Button
                                   CustomButton(
                                     text: 'Encode',
                                     icon: Icons.enhanced_encryption,
