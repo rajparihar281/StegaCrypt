@@ -344,7 +344,6 @@ class _EncodePageState extends State<EncodePage> {
                                   ),
                                   const Spacer(),
 
-                                  // Footer note at bottom
                                   Center(
                                     child: Padding(
                                       padding: const EdgeInsets.only(
