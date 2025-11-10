@@ -20,7 +20,6 @@ void main() async {
     ),
   );
 
-  // Request all permissions at startup
   PermissionService().requestPermissions();
 
   runApp(const MyApp());
