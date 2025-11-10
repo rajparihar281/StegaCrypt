@@ -234,8 +234,6 @@ class _EncodePageState extends State<EncodePage> {
                                     ],
                                   ),
                                   const SizedBox(height: 20),
-
-                                  // Image Selection Buttons
                                   Row(
                                     children: [
                                       Expanded(
