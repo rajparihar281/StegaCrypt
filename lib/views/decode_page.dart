@@ -120,7 +120,6 @@ class _DecodePageState extends State<DecodePage> {
                   )
                   : Column(
                     children: [
-                      // App bar area
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Row(
