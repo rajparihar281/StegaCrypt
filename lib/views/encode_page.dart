@@ -256,7 +256,6 @@ class _EncodePageState extends State<EncodePage> {
                                     ],
                                   ),
 
-                                  // Image Preview
                                   ImagePreview(
                                     image: _selectedImage,
                                     onClear: _clearImage,
