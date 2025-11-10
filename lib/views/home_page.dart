@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Add drawer to the Scaffold
       drawer: const AppDrawer(),
 
       // Updated AppBar with gradient background and better visibility
