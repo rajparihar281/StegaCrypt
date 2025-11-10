@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: const AppDrawer(),
 
-      // Updated AppBar with gradient background and better visibility
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
