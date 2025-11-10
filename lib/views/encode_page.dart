@@ -278,7 +278,6 @@ class _EncodePageState extends State<EncodePage> {
                                     onPressed: _encodeData,
                                   ),
 
-                                  // Quick Tip with Help Link
                                   const SizedBox(height: 30),
                                   Container(
                                     padding: const EdgeInsets.all(15),
