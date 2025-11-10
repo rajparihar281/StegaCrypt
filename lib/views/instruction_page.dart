@@ -109,8 +109,6 @@ class InstructionsPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 30),
-
-                  // Technical Details
                   _buildExpandableSection(
                     title: "Technical Details",
                     icon: Icons.code,
