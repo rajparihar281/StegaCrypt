@@ -203,7 +203,6 @@ class _EncodePageState extends State<EncodePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // App Bar Section with Help Button
                                   Row(
                                     children: [
                                       IconButton(
