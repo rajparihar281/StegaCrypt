@@ -94,7 +94,7 @@ class _DecodePageState extends State<DecodePage> {
     return Scaffold(
       body: Container(
         width: double.infinity, // Ensure full width
-        height: double.infinity, // Ensure full height
+        height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
