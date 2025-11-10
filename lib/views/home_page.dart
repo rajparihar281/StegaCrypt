@@ -5,8 +5,6 @@ import 'package:data_hiding_app/views/decode_page.dart' show DecodePage;
 import 'package:data_hiding_app/views/encode_page.dart' show EncodePage;
 import 'package:flutter/material.dart';
 
-// Import the AppDrawer class
-// If it's in a separate file, you'll need to import it
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
