@@ -3,10 +3,10 @@ import 'package:data_hiding_app/services/permission_service.dart'
 import 'package:data_hiding_app/views/splash_screen.dart' show SplashScreen;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:data_hiding_app/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -31,13 +31,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stegacrypt',
+      title: 'StegaCrypt',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
+      theme: AppTheme.darkTheme,
       home: const SplashScreen(),
     );
   }

@@ -1,8 +1,8 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:data_hiding_app/views/instruction_page.dart';
 import 'package:data_hiding_app/views/security_info_page.dart';
 import 'package:flutter/material.dart';
+import 'package:data_hiding_app/theme/app_colors.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -10,166 +10,113 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF121212), Color(0xFF1E1E30), Color(0xFF252550)],
-          ),
-        ),
+      backgroundColor: AppColors.background,
+      child: SafeArea(
         child: Column(
           children: [
-            // Drawer header with app logo
-            DrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.purpleAccent.withOpacity(0.8),
-                    Colors.deepPurple,
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+            Container(
+              padding: const EdgeInsets.all(24.0),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.border),
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryAccent.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: AppColors.primaryAccent.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: const Icon(
+                      LucideIcons.shield,
+                      color: AppColors.primaryAccent,
+                      size: 32,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'StegaCrypt',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        'Secure Vault',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: AppColors.primaryAccent,
+                              letterSpacing: 1.5,
+                            ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Circle avatar with app icon
-                    Container(
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            blurRadius: 10,
-                            spreadRadius: 2,
-                          ),
-                        ],
-                      ),
-                      child: const CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.enhanced_encryption,
-                          size: 40,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'StegaCrypt',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
-
-            // // Drawer items
-            // _buildDrawerItem(
-            //   context: context,
-            //   icon: Icons.home,
-            //   title: 'Option 1',
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     // Navigate to Option 1 page in the future
-            //   },
-            // ),
-
-            // // Divider between items
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 16),
-            //   child: Divider(
-            //     color: Colors.purpleAccent,
-            //     thickness: 1,
-            //     height: 1,
-            //   ),
-            // ),
-
-            // _buildDrawerItem(
-            //   context: context,
-            //   icon: Icons.settings,
-            //   title: 'Option 2',
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     // Navigate to Option 2 page in the future
-            //   },
-            // ),
-
-            // const Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 16),
-            //   child: Divider(
-            //     color: Colors.purpleAccent,
-            //     thickness: 1,
-            //     height: 1,
-            //   ),
-            // ),
-
+            const SizedBox(height: 16),
             _buildDrawerItem(
               context: context,
-              icon: Icons.info,
+              icon: LucideIcons.layoutDashboard,
+              title: 'Dashboard',
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            _buildDrawerItem(
+              context: context,
+              icon: LucideIcons.shieldAlert,
               title: 'Security Details',
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SecurityInfoPage()));
-                // Navigate to Option 3 page in the future
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecurityInfoPage()),
+                );
               },
             ),
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Divider(
-                color: Colors.purpleAccent,
-                thickness: 1,
-                height: 1,
-              ),
-            ),
-
             _buildDrawerItem(
               context: context,
-              icon: Icons.help,
-              title: 'How StegaCrpyt Works',
+              icon: LucideIcons.helpCircle,
+              title: 'How It Works',
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>InstructionsPage()));
-                // Navigate to Option 4 page in the future
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const InstructionsPage()),
+                );
               },
             ),
-   const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Divider(
-                color: Colors.purpleAccent,
-                thickness: 1,
-                height: 1,
+            const Spacer(),
+            const Divider(color: AppColors.border),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Row(
+                children: [
+                  const Icon(LucideIcons.settings, color: AppColors.mutedText, size: 20),
+                  const SizedBox(width: 16),
+                  Text(
+                    'Settings',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppColors.mutedText,
+                        ),
+                  ),
+                ],
               ),
             ),
-
-            const Spacer(),
-
-            // App version at the bottom
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(bottom: 24.0),
               child: Text(
                 'Version 1.0.0',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
-                  fontSize: 12,
-                ),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: AppColors.mutedText.withValues(alpha: 0.5),
+                    ),
               ),
             ),
           ],
@@ -185,15 +132,17 @@ class AppDrawer extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return ListTile(
-      leading: Icon(icon, color: Colors.white, size: 24),
+      leading: Icon(icon, color: AppColors.primaryText, size: 24),
       title: Text(
         title,
-        style: const TextStyle(color: Colors.white, fontSize: 16),
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      hoverColor: Colors.purpleAccent.withOpacity(0.1),
-      splashColor: Colors.purpleAccent.withOpacity(0.3),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      hoverColor: AppColors.primaryAccent.withValues(alpha: 0.1),
     );
   }
 }
