@@ -1,6 +1,8 @@
 import 'package:data_hiding_app/views/home_page.dart' show HomePage;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:data_hiding_app/theme/app_colors.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,9 +30,11 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward();
     Future.delayed(const Duration(seconds: 3), () {
       // ignore: use_build_context_synchronously
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
     });
   }
 
@@ -43,12 +47,16 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF1A1A2E), Color(0xFF16213E), Color(0xFF0F3460)],
+          gradient: RadialGradient(
+            center: Alignment.center,
+            radius: 1.2,
+            colors: [
+              AppColors.secondaryBackground,
+              AppColors.background,
+            ],
           ),
         ),
         child: Center(
@@ -61,41 +69,45 @@ class _SplashScreenState extends State<SplashScreen>
                   width: 120,
                   height: 120,
                   decoration: BoxDecoration(
-                    // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.2),
+                    color: AppColors.primaryAccent.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
+                    border: Border.all(
+                      color: AppColors.primaryAccent.withValues(alpha: 0.3),
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primaryAccent.withValues(alpha: 0.2),
+                        blurRadius: 30,
+                        spreadRadius: 5,
+                      ),
+                    ],
                   ),
                   child: const Icon(
-                    Icons.enhanced_encryption,
-                    size: 80,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              const Text(
-                'StegaCrypt',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  'Hide your secret messages securely in images',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.8),
+                    LucideIcons.shield,
+                    size: 60,
+                    color: AppColors.primaryAccent,
                   ),
                 ),
               ),
               const SizedBox(height: 40),
-              const SpinKitPulse(color: Colors.white, size: 50.0),
+              Text(
+                'StegaCrypt',
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'Hide. Encrypt. Protect.',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.secondaryText,
+                  letterSpacing: 0.5,
+                ),
+              ),
+              const SizedBox(height: 60),
+              const SpinKitPulse(color: AppColors.primaryAccent, size: 40.0),
             ],
           ),
         ),

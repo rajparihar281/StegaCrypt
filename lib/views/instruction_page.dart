@@ -1,7 +1,6 @@
-// ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
-import 'package:data_hiding_app/components/custom_button.dart'
-    show CustomButton;
+import 'package:data_hiding_app/theme/app_colors.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class InstructionsPage extends StatelessWidget {
   const InstructionsPage({super.key});
@@ -9,139 +8,121 @@ class InstructionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color.fromARGB(255, 18, 18, 18), Color(0xFF1E1E30), Color(0xFF252550)],
-          ),
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(LucideIcons.arrowLeft, color: AppColors.primaryText),
+          onPressed: () => Navigator.pop(context),
         ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        title: Text(
+          'How StegaCrypt Works',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildSection(
+                context,
+                title: "The Quantum Vault Process",
+                icon: LucideIcons.binary,
+                color: AppColors.primaryAccent,
                 children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.white),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                      const Text(
-                        'How It Works',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                  _buildStep(
+                    context,
+                    step: "01",
+                    title: "Image Selection",
+                    description: "Select an ordinary image to act as your secure vault.",
+                    icon: LucideIcons.image,
                   ),
-                  const SizedBox(height: 30),
-                  _buildSection(
-                    title: "Data Hiding Process",
-                    icon: Icons.enhanced_encryption,
-                    color: Colors.greenAccent[700]!,
-                    children: [
-                      _buildStep(
-                        step: "1",
-                        title: "Select an Image",
-                        description:
-                            "Choose an image from your gallery or take a new photo with your camera.",
-                        icon: Icons.image,
-                      ),
-                      _buildStep(
-                        step: "2",
-                        title: "Enter Secret Text",
-                        description:
-                            "Type the secret message you want to hide within the image.",
-                        icon: Icons.text_fields,
-                      ),
-                      _buildStep(
-                        step: "3",
-                        title: "Encode Data",
-                        description:
-                            "Press the encode button to hide your message in the image using steganography.",
-                        icon: Icons.lock,
-                      ),
-                      _buildStep(
-                        step: "4",
-                        title: "Save Result",
-                        description:
-                            "The app will save the encoded image to your device. The image looks normal but contains your hidden message.",
-                        icon: Icons.save,
-                      ),
-                    ],
+                  _buildStep(
+                    context,
+                    step: "02",
+                    title: "Payload Construction",
+                    description: "Input the secret data you wish to encrypt and hide.",
+                    icon: LucideIcons.fileText,
                   ),
-                  const SizedBox(height: 30),
-
-                  _buildSection(
-                    title: "Retrieving Hidden Data",
-                    icon: Icons.no_encryption,
-                    color: Colors.blueAccent,
-                    children: [
-                      _buildStep(
-                        step: "1",
-                        title: "Open Decode Page",
-                        description:
-                            "Navigate to the decode section of the app.",
-                        icon: Icons.vpn_key,
-                      ),
-                      _buildStep(
-                        step: "2",
-                        title: "Select Encoded Image",
-                        description:
-                            "Choose the image containing the hidden message.",
-                        icon: Icons.photo_library,
-                      ),
-                      _buildStep(
-                        step: "3",
-                        title: "Decode",
-                        description:
-                            "The app will extract and display the hidden message from the image.",
-                        icon: Icons.visibility,
-                      ),
-                    ],
+                  _buildStep(
+                    context,
+                    step: "03",
+                    title: "2nd LSB Embedding",
+                    description: "Data is embedded into the 2nd Least Significant Bit of the image pixels, making it visually imperceptible.",
+                    icon: LucideIcons.lock,
                   ),
-                  const SizedBox(height: 30),
-                  _buildExpandableSection(
-                    title: "Technical Details",
-                    icon: Icons.code,
-                    color: Colors.purpleAccent,
-                    content: const Text(
-                      "This app uses steganography, a technique to hide information within ordinary files. "
-                      "The process works by modifying the least significant bits (LSBs) of the pixel data in the image. "
-                      "These tiny changes are imperceptible to the human eye but allow us to store your message within the image itself. "
-                      "The data is embedded in a way that preserves the visual appearance of the image while securely "
-                      "hiding your message. Only someone with this app can extract the hidden information.",
-                      style: TextStyle(color: Colors.white70, height: 1.5),
-                    ),
+                  _buildStep(
+                    context,
+                    step: "04",
+                    title: "Secure Output",
+                    description: "The steganographic image is generated and secured for transmission.",
+                    icon: LucideIcons.download,
                   ),
-                  const SizedBox(height: 30),
-
-                  CustomButton(
-                    text: 'Start Hiding Data',
-                    icon: Icons.arrow_forward,
-                    backgroundColor: Colors.greenAccent[700],
-                    onPressed: () => Navigator.pop(context),
-                  ),
-
-                  const SizedBox(height: 30),
                 ],
               ),
-            ),
+              const SizedBox(height: 32),
+              _buildSection(
+                context,
+                title: "Data Extraction",
+                icon: LucideIcons.scan,
+                color: AppColors.secondaryAccent,
+                children: [
+                  _buildStep(
+                    context,
+                    step: "01",
+                    title: "Scan Image",
+                    description: "Load the steganographic image into the extraction layer.",
+                    icon: LucideIcons.scanLine,
+                  ),
+                  _buildStep(
+                    context,
+                    step: "02",
+                    title: "Recover Payload",
+                    description: "The 2nd LSB data is reconstructed back into the original payload.",
+                    icon: LucideIcons.unlock,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
+              _buildExpandableSection(
+                context,
+                title: "Technical Overview: 2nd LSB",
+                icon: LucideIcons.cpu,
+                color: AppColors.success,
+                content: Text(
+                  "By altering the second least significant bit of the pixel channels, StegaCrypt achieves a perfect balance between payload capacity and visual integrity. "
+                  "The changes are deeply embedded at the binary level, avoiding detection by standard forensic tools while ensuring the image looks completely ordinary to the human eye.",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.6),
+                ),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(LucideIcons.arrowRight),
+                  label: const Text('Start Hiding Data'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryAccent,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _buildSection({
+  Widget _buildSection(
+    BuildContext context, {
     required String title,
     required IconData icon,
     required Color color,
@@ -153,81 +134,80 @@ class InstructionsPage extends StatelessWidget {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(10),
+                color: color.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: color.withValues(alpha: 0.2)),
               ),
               child: Icon(icon, color: color, size: 24),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),
-        const SizedBox(height: 20),
-        ...children,
+        const SizedBox(height: 24),
+        Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: AppColors.cardBackground,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppColors.border),
+          ),
+          child: Column(
+            children: children,
+          ),
+        ),
       ],
     );
   }
 
-  Widget _buildStep({
+  Widget _buildStep(
+    BuildContext context, {
     required String step,
     required String title,
     required String description,
     required IconData icon,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 24),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Text(
-                step,
-                style: const TextStyle(
-                  color: Colors.white,
+          Text(
+            step,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.mutedText,
+                  fontFamily: 'monospace',
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-            ),
           ),
-          const SizedBox(width: 15),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(icon, color: Colors.white70, size: 18),
+                    Icon(icon, color: AppColors.primaryText, size: 18),
                     const SizedBox(width: 8),
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
                 Text(
                   description,
-                  style: const TextStyle(color: Colors.white70, height: 1.4),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
@@ -237,45 +217,44 @@ class InstructionsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildExpandableSection({
+  Widget _buildExpandableSection(
+    BuildContext context, {
     required String title,
     required IconData icon,
     required Color color,
     required Widget content,
   }) {
-    return ExpansionTile(
-      tilePadding: EdgeInsets.zero,
-      title: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: color, size: 24),
-          ),
-          const SizedBox(width: 12),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ],
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.cardBackground,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
       ),
-      iconColor: Colors.white,
-      collapsedIconColor: Colors.white70,
-      backgroundColor: Colors.transparent,
-      collapsedBackgroundColor: Colors.transparent,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-          child: content,
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          title: Row(
+            children: [
+              Icon(icon, color: color, size: 24),
+              const SizedBox(width: 16),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            ],
+          ),
+          iconColor: AppColors.primaryText,
+          collapsedIconColor: AppColors.mutedText,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+              child: content,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
