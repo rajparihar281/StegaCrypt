@@ -3,7 +3,7 @@ import 'package:data_hiding_app/views/decode_page.dart' show DecodePage;
 import 'package:data_hiding_app/views/encode_page.dart' show EncodePage;
 import 'package:flutter/material.dart';
 import 'package:data_hiding_app/theme/app_colors.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
