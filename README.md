@@ -1,4 +1,4 @@
-# StegaCrypt 🔐
+# StegaCrypt 
 
 > Hide secret text messages inside images — invisible to the naked eye.
 
@@ -6,7 +6,7 @@ A Flutter-based image steganography app that embeds secret text into PNG images 
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 <table>
   <tr>
@@ -25,7 +25,7 @@ A Flutter-based image steganography app that embeds secret text into PNG images 
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Encode** — Hide a text message inside any image from your gallery or camera
 - **Decode** — Extract hidden text from a previously encoded image
@@ -34,28 +34,28 @@ A Flutter-based image steganography app that embeds secret text into PNG images 
 
 ---
 
-## 🔐 Example Use Cases
+##  Example Use Cases
 
 | Use Case | Description |
 |---|---|
-| 🗒️ Secret notes | Embed personal notes inside a photo only you can decode |
-| 💌 Hidden messages | Send a secret message to a friend inside a normal-looking image |
-| 🎭 Fun & pranks | Hide a funny message in a photo and challenge friends to find it |
-| 🔒 Private data | Store sensitive info invisibly inside an image |
+|  Secret notes | Embed personal notes inside a photo only you can decode |
+|  Hidden messages | Send a secret message to a friend inside a normal-looking image |
+|  Fun & pranks | Hide a funny message in a photo and challenge friends to find it |
+|  Private data | Store sensitive info invisibly inside an image |
 
 ---
 
-## 🚀 Demo
+## Demo
 
 1. Pick any image from your gallery or camera
 2. Type your secret message
 3. Hit **Encode** — a new PNG is saved to your `DCIM/` folder
 4. Share it with anyone
-5. Open the app → **Decode** → select the image → message revealed ✅
+5. Open the app → **Decode** → select the image → message revealed 
 
 ---
 
-## 🛠 How It Works
+## How It Works
 
 Text is converted to binary and embedded into the **2nd LSB** of each RGB channel per pixel. A 32-bit header stores the message length for accurate extraction. The visual difference is imperceptible to the human eye.
 
@@ -113,3 +113,9 @@ APK output: `build/app/outputs/flutter-apk/app-release.apk`
 
 - PNG output only (lossless format required — JPEG compression destroys hidden data)
 - Message size limited by image resolution
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
