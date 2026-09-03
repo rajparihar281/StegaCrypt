@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:data_hiding_app/theme/app_colors.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class SecurityInfoPage extends StatelessWidget {
   const SecurityInfoPage({super.key});
