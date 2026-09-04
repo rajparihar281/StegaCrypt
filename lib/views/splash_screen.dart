@@ -29,7 +29,6 @@ class _SplashScreenState extends State<SplashScreen>
     );
     _animationController.forward();
     Future.delayed(const Duration(seconds: 3), () {
-      // ignore: use_build_context_synchronously
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const HomePage()),
